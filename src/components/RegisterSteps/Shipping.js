@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Context } from "../../Context";
 
 export default function Shipping() {
-  const { setShippedByDHL } = useContext(Context);
+  const { setShippedByDHL, handleFormChange, formData } = useContext(Context);
   return (
     <section className="form-container col col-12">
       <form className="col col-12" data-phase="shipping">
@@ -11,10 +11,12 @@ export default function Shipping() {
         <section className="form-body col col-12">
           <label className="radio-group col col-12" data-price="0">
             <input
-              id="shipping-standard"
               type="radio"
+              id="shipping-standard"
               name="shipping"
-              defaultChecked
+              value="shipping-standard"
+              checked={formData.shipping === "shipping-standard"}
+              onChange={handleFormChange}
               onClick={() => setShippedByDHL(false)}
             />
             <div className="radio-info">
@@ -28,9 +30,12 @@ export default function Shipping() {
           </label>
           <label className="radio-group col col-12" data-price="500">
             <input
-              id="shipping-dhl"
               type="radio"
+              id="shipping-dhl"
               name="shipping"
+              value="shipping-dhl"
+              checked={formData.shipping === "shipping-dhl"}
+              onChange={handleFormChange}
               onClick={() => setShippedByDHL(true)}
             />
             <div className="radio-info">

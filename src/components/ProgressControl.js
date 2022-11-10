@@ -5,7 +5,8 @@ import { ReactComponent as RightArrow } from "../icons/right-arrow.svg";
 import { Context } from "../Context";
 
 export default function ProgressControl() {
-  const { steps, increaseSteps, decreaseSteps } = useContext(Context);
+  const { steps, increaseSteps, decreaseSteps, handleFormSubmit } =
+    useContext(Context);
 
   return (
     <section className="progress-control-container col col-lg-6 col-sm-12">
@@ -37,7 +38,9 @@ export default function ProgressControl() {
             <LeftArrow className="cursor-pointer svg" />
             上一步
           </button>
-          <button className="next">確認下單</button>
+          <button className="next" onClick={handleFormSubmit}>
+            確認下單
+          </button>
         </section>
       )}
     </section>

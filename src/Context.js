@@ -9,6 +9,34 @@ function ContextProvider({ children }) {
   const [steps, setSteps] = useState(1);
   const [shippedByDHL, setShippedByDHL] = useState(false);
   const [items, setItems] = useState(productData);
+  const [formData, setFormData] = useState({
+    userTitle: "mr",
+    userName: "",
+    userPhone: "",
+    userEmail: "",
+    userCity: "",
+    userAddress: "",
+    shipping: "",
+    creditCardName: "",
+    creditCardNumber: "",
+    creditCardExpiredDate: "",
+    creditCardCVC: "",
+  });
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+  }
+
+  function handleFormChange(event) {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
+  }
 
   function toggleDarkMode() {
     setDarkMode((prevMode) => !prevMode);
@@ -35,6 +63,10 @@ function ContextProvider({ children }) {
         setShippedByDHL,
         items,
         setItems,
+        formData,
+        setFormData,
+        handleFormSubmit,
+        handleFormChange,
       }}
     >
       {children}

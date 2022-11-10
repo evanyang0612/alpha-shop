@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../Context";
 
 export default function Address() {
+  const { formData, handleFormChange } = useContext(Context);
   return (
     <section className="form-container col col-12">
       <form className="col col-12" data-phase="address">
@@ -8,9 +10,16 @@ export default function Address() {
         <section className="form-body col col-12">
           <div className="col col-12">
             <div className="input-group input-w-lg-2 input-w-sm-s1">
-              <label className="input-label">稱謂</label>
+              <label className="input-label" htmlFor="userTitle">
+                稱謂
+              </label>
               <div className="select-container">
-                <select>
+                <select
+                  id="userTitle"
+                  value={formData.userTitle}
+                  onChange={handleFormChange}
+                  name="userTitle"
+                >
                   <option value="mr">先生</option>
                   <option value="ms">女士</option>
                   <option value="mx">不明</option>
@@ -18,25 +27,58 @@ export default function Address() {
               </div>
             </div>
             <div className="input-group input-w-lg-4 input-w-sm-s2">
-              <label className="input-label">姓名</label>
-              <input type="text" placeholder="請輸入姓名" />
+              <label className="input-label" htmlFor="userName">
+                姓名
+              </label>
+              <input
+                type="text"
+                placeholder="請輸入姓名"
+                onChange={handleFormChange}
+                name="userName"
+                value={formData.userName}
+                
+              />
             </div>
           </div>
           <div className="col col-12">
             <div className="input-group input-w-lg-3 input-w-sm-full">
-              <label className="input-label">電話</label>
-              <input type="tel" placeholder="請輸入行動電話" />
+              <label className="input-label" htmlFor="userPhone">
+                電話
+              </label>
+              <input
+                type="tel"
+                placeholder="請輸入行動電話"
+                onChange={handleFormChange}
+                name="userPhone"
+                value={formData.userPhone}
+              />
             </div>
             <div className="input-group input-w-lg-3 input-w-sm-full">
-              <label className="input-label">Email</label>
-              <input type="email" placeholder="請輸入電子郵件" />
+              <label className="input-label" htmlFor="userEmail">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="請輸入電子郵件"
+                onChange={handleFormChange}
+                name="userEmail"
+                value={formData.userEmail}
+              />
             </div>
           </div>
           <div className="col col-12">
             <div className="input-group input-w-lg-2 input-w-sm-full">
-              <label className="input-label">縣市</label>
+              <label className="input-label" htmlFor="userCity">
+                縣市
+              </label>
               <div className="select-container">
-                <select required>
+                <select
+                  required
+                  id="userCity"
+                  value={formData.userCity}
+                  onChange={handleFormChange}
+                  name="userCity"
+                >
                   <option value="">請選擇縣市</option>
                   <option value="KLU">基隆市</option>
                   <option value="TPH">新北市</option>
@@ -71,8 +113,16 @@ export default function Address() {
               </div>
             </div>
             <div className="input-group input-w-lg-4 input-w-sm-full">
-              <label className="input-label">地址</label>
-              <input type="text" placeholder="請輸入地址" />
+              <label className="input-label" htmlFor="userAddress">
+                地址
+              </label>
+              <input
+                type="text"
+                placeholder="請輸入地址"
+                onChange={handleFormChange}
+                name="userAddress"
+                value={formData.userAddress}
+              />
             </div>
           </div>
         </section>
