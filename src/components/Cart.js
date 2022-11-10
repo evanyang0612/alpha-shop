@@ -5,8 +5,9 @@ import CartItem from "./CartItem";
 import { Context } from "../Context";
 
 export default function Cart() {
-  const { shippedByDHL, cartDatas, DHL_SHIPPING_FEE } = useContext(Context);
-  const [items, setItems] = useState(cartDatas);
+  const { shippedByDHL, DHL_SHIPPING_FEE, items, setItems } =
+    useContext(Context);
+
   const [totalPrice, setTotalPrice] = useState(
     items
       .map((item) => item.price * item.quantity)
@@ -98,7 +99,7 @@ export default function Cart() {
       <section className="cart-info shipping col col-12">
         <div className="text">運費</div>
         <div className="price">
-          {shippedByDHL ? `${DHL_SHIPPING_FEE}` : "免費"}
+          {shippedByDHL ? `$${DHL_SHIPPING_FEE}` : "免費"}
         </div>
       </section>
       <section className="cart-info total col col-12">

@@ -17,7 +17,7 @@ export default function Main(props) {
         {/* Register */}
         <section
           className="register-container col col-lg-6 col-sm-12"
-          data-phase="1"
+          data-phase={steps}
           data-total-price="0"
         >
           {/* Register-title */}

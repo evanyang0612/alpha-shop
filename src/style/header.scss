@@ -195,3 +195,22 @@ label.burger-container {
     transform: scale(1);
   }
 }
+
+.cart-icon {
+  position: relative;
+}
+
+.item-count {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  font-size: 0.25rem;
+  background-color: #f67599;
+  color: white;
+  border-radius: 50%;
+  top: -2px;
+  right: -6px;
+}

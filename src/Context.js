@@ -8,7 +8,7 @@ function ContextProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
   const [steps, setSteps] = useState(1);
   const [shippedByDHL, setShippedByDHL] = useState(false);
-  const [cartDatas, setCartDatas] = useState(productData);
+  const [items, setItems] = useState(productData);
 
   function toggleDarkMode() {
     setDarkMode((prevMode) => !prevMode);
@@ -33,8 +33,8 @@ function ContextProvider({ children }) {
         decreaseSteps,
         shippedByDHL,
         setShippedByDHL,
-        cartDatas,
-        setCartDatas,
+        items,
+        setItems,
       }}
     >
       {children}

@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
-import productData from "../productData";
+import React from "react";
+
 import { ReactComponent as IconMinus } from "../icons/minus.svg";
 import { ReactComponent as IconPlus } from "../icons/plus.svg";
-import { Context } from "../Context";
 
 export default function CartItem({ item, decreaseQuantity, increaseQuantity }) {
   return (
