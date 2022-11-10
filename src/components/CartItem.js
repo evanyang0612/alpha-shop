@@ -1,0 +1,35 @@
+import React, { useState, useContext } from "react";
+import productData from "../productData";
+import { ReactComponent as IconMinus } from "../icons/minus.svg";
+import { ReactComponent as IconPlus } from "../icons/plus.svg";
+import { Context } from "../Context";
+
+export default function CartItem({ item, decreaseQuantity, increaseQuantity }) {
+  return (
+    <div
+      className="product-container col col-12"
+      data-count="0"
+      data-price="3999"
+      key={item.id}
+    >
+      <img className="img-container" src={item.img} alt={item.name} />
+      <div className="product-info">
+        <div className="product-name">{item.name}</div>
+        <div className="product-control-container">
+          <div className="product-control">
+            <IconMinus
+              className="product-action minus"
+              onClick={decreaseQuantity}
+            />
+            <span className="product-count">{item.quantity}</span>
+            <IconPlus
+              className="product-action plus"
+              onClick={increaseQuantity}
+            />
+          </div>
+        </div>
+        <div className="price">${item.price}</div>
+      </div>
+    </div>
+  );
+}

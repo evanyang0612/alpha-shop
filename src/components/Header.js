@@ -8,7 +8,7 @@ import { ReactComponent as IconLogo } from "../icons/logo.svg";
 
 import { Context } from "../Context";
 
-export default function Header() {
+export default function Header({ itemCount }) {
   const { darkMode, toggleDarkMode } = useContext(Context);
 
   return (
@@ -55,6 +55,7 @@ export default function Header() {
                 <IconSearch className="nav-icon cursor-point" />
               </li>
               <li className="nav-item">
+                <span>{itemCount}</span>
                 <IconCart className="nav-icon cursor-point" />
               </li>
               <li id="theme-toggle" className="nav-item">

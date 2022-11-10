@@ -8,7 +8,7 @@ import Cart from "./Cart";
 
 import { Context } from "../Context";
 
-export default function Main() {
+export default function Main(props) {
   const { steps } = useContext(Context);
 
   return (
@@ -29,7 +29,7 @@ export default function Main() {
           <ProgressControl />
         </section>
         {/* Cart */}
-        <Cart />
+        <Cart itemCount={props.itemCount} setItemCount={props.setItemCount} />
       </div>
     </main>
   );

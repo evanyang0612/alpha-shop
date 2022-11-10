@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { Context } from "../../Context";
 
 export default function Shipping() {
+  const { setShippedByDHL } = useContext(Context);
   return (
     <section className="form-container col col-12">
       <form className="col col-12" data-phase="shipping">
@@ -11,7 +14,8 @@ export default function Shipping() {
               id="shipping-standard"
               type="radio"
               name="shipping"
-              checked
+              defaultChecked
+              onClick={() => setShippedByDHL(false)}
             />
             <div className="radio-info">
               <div className="col col-12">
@@ -23,7 +27,12 @@ export default function Shipping() {
             <div className="radio-box-border"></div>
           </label>
           <label className="radio-group col col-12" data-price="500">
-            <input id="shipping-dhl" type="radio" name="shipping" />
+            <input
+              id="shipping-dhl"
+              type="radio"
+              name="shipping"
+              onClick={() => setShippedByDHL(true)}
+            />
             <div className="radio-info">
               <div className="col col-12">
                 <div className="text">DHL 貨運</div>
