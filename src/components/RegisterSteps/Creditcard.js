@@ -5,7 +5,7 @@ export default function Creditcard() {
   const { handleFormChange, formData } = useContext(Context);
   return (
     <section className="form-container col col-12">
-      <form className="col col-12" data-phase="credit-card">
+      <form id="creditCard" className="col col-12" data-phase="credit-card">
         <h3 className="form-title">付款資訊</h3>
         <section className="form-body col col-12">
           <div className="col col-12">
@@ -17,7 +17,7 @@ export default function Creditcard() {
                 onChange={handleFormChange}
                 name="creditCardName"
                 value={formData.creditCardName}
-                required
+                required="required"
               />
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function Creditcard() {
                 onChange={handleFormChange}
                 name="creditCardCVC"
                 value={formData.creditCardCVC}
-                required="required"
+                required
               />
             </div>
           </div>

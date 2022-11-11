@@ -8,7 +8,7 @@ function ContextProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
   const [steps, setSteps] = useState(1);
   const [shippedByDHL, setShippedByDHL] = useState(false);
-  const [items, setItems] = useState(productData);
+  const [cartItems, setCartItems] = useState(productData);
   const [formData, setFormData] = useState({
     userTitle: "mr",
     userName: "",
@@ -61,8 +61,8 @@ function ContextProvider({ children }) {
         decreaseSteps,
         shippedByDHL,
         setShippedByDHL,
-        items,
-        setItems,
+        cartItems,
+        setCartItems,
         formData,
         setFormData,
         handleFormSubmit,

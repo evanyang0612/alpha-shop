@@ -5,25 +5,21 @@ import CartItem from "./CartItem";
 import { Context } from "../Context";
 
 export default function Cart() {
-  const { shippedByDHL, DHL_SHIPPING_FEE, items, setItems } =
+  const { shippedByDHL, DHL_SHIPPING_FEE, cartItems, setCartItems } =
     useContext(Context);
 
-  const [totalPrice, setTotalPrice] = useState(
-    items
-      .map((item) => item.price * item.quantity)
-      .reduce((acc, cur) => acc + cur, 0)
-  );
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  function increaseQuantity(id) {
-    setItems((items) =>
+  function handleIncreaseQuantity(id) {
+    setCartItems((items) =>
       items.map((item) => {
         return item.id === id ? { ...item, quantity: item.quantity + 1 } : item;
       })
     );
   }
 
-  function decreaseQuantity(id) {
-    setItems((items) =>
+  function handleDecreaseQuantity(id) {
+    setCartItems((items) =>
       items.map((item) => {
         return item.id === id ? { ...item, quantity: item.quantity - 1 } : item;
       })
@@ -31,20 +27,26 @@ export default function Cart() {
   }
 
   // update total price whenever items are changed
+  // useEffect(() => {
+  //   setTotalPrice(
+  //     cartItems
+  //       .map((item) => item.price * item.quantity)
+  //       .reduce((acc, cur) => acc + cur, 0)
+  //   );
+  // }, [cartItems]);
+
   useEffect(() => {
     setTotalPrice(
-      items
-        .map((item) => item.price * item.quantity)
-        .reduce((acc, cur) => acc + cur, 0)
+      cartItems.reduce((acc, cur) => acc.price + acc.quantity + cur, 0)
     );
-  }, [items]);
+  }, [cartItems]);
 
-  const cartElements = items.map((item) => {
+  const cartElements = cartItems.map((item) => {
     return (
       item.quantity > 0 && (
         <CartItem
-          increaseQuantity={() => increaseQuantity(item.id)}
-          decreaseQuantity={() => decreaseQuantity(item.id)}
+          handleIncreaseQuantity={() => handleIncreaseQuantity(item.id)}
+          handleDecreaseQuantity={() => handleDecreaseQuantity(item.id)}
           item={item}
           key={item.id}
         />

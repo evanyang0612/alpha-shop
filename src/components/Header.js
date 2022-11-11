@@ -9,9 +9,9 @@ import { ReactComponent as IconLogo } from "../icons/logo.svg";
 import { Context } from "../Context";
 
 export default function Header() {
-  const { darkMode, toggleDarkMode, items } = useContext(Context);
+  const { darkMode, toggleDarkMode, cartItems } = useContext(Context);
 
-  const itemCount = items
+  const itemCount = cartItems
     .map((item) => item.quantity)
     .reduce((acc, cur) => acc + cur, 0);
 
