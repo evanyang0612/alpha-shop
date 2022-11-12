@@ -27,17 +27,9 @@ export default function Cart() {
   }
 
   // update total price whenever items are changed
-  // useEffect(() => {
-  //   setTotalPrice(
-  //     cartItems
-  //       .map((item) => item.price * item.quantity)
-  //       .reduce((acc, cur) => acc + cur, 0)
-  //   );
-  // }, [cartItems]);
-
   useEffect(() => {
     setTotalPrice(
-      cartItems.reduce((acc, cur) => acc.price + acc.quantity + cur, 0)
+      cartItems.reduce((acc, cur) => cur.price * cur.quantity + acc, 0)
     );
   }, [cartItems]);
 
@@ -45,8 +37,8 @@ export default function Cart() {
     return (
       item.quantity > 0 && (
         <CartItem
-          handleIncreaseQuantity={() => handleIncreaseQuantity(item.id)}
-          handleDecreaseQuantity={() => handleDecreaseQuantity(item.id)}
+          onIncreaseQuantity={() => handleIncreaseQuantity(item.id)}
+          onDecreaseQuantity={() => handleDecreaseQuantity(item.id)}
           item={item}
           key={item.id}
         />

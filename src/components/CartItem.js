@@ -5,8 +5,8 @@ import { ReactComponent as IconPlus } from "../icons/plus.svg";
 
 export default function CartItem({
   item,
-  handleDecreaseQuantity,
-  handleIncreaseQuantity,
+  onDecreaseQuantity,
+  onIncreaseQuantity,
 }) {
   return (
     <div
@@ -22,12 +22,12 @@ export default function CartItem({
           <div className="product-control">
             <IconMinus
               className="product-action minus"
-              onClick={handleDecreaseQuantity}
+              onClick={onDecreaseQuantity}
             />
             <span className="product-count">{item.quantity}</span>
             <IconPlus
               className="product-action plus"
-              onClick={handleIncreaseQuantity}
+              onClick={onIncreaseQuantity}
             />
           </div>
         </div>
