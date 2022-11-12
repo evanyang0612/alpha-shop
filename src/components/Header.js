@@ -11,9 +11,7 @@ import { Context } from "../Context";
 export default function Header() {
   const { darkMode, toggleDarkMode, cartItems } = useContext(Context);
 
-  const itemCount = cartItems
-    .map((item) => item.quantity)
-    .reduce((acc, cur) => acc + cur, 0);
+  const itemCount = cartItems.reduce((acc, cur) => cur.quantity + acc, 0);
 
   return (
     <>
